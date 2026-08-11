@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio website for Aman Agnihotri, AI Engineer and Master's student in Applied Computer Science at Concordia University.">
+    <title>Aman Agnihotri | AI Engineer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Caveat+Brush&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true" data-scroll-progress></div>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Aman Agnihotri home">
+          <span class="brand-mark" aria-hidden="true">
+            <span>A</span><span>A</span>
+          </span>
+          <span class="brand-text">AMAN</span>
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme" data-theme-toggle>
+            <span class="theme-track" aria-hidden="true">
+              <span class="theme-dot"></span>
+            </span>
+          </button>
+          <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false" data-menu-toggle>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero section-shell" id="top" data-section>
+        <div class="hero-aura" aria-hidden="true"></div>
+        <div class="hero-copy reveal">
+          <p class="hero-badge">AI engineer in progress at Concordia University</p>
+          <p class="eyebrow">~ applied computer science, useful ai, human taste ~</p>
+          <h1 class="hero-title">
+            <span class="paint-red">A</span><span class="paint-blue">m</span><span class="paint-yellow">a</span><span>n</span>
+            <span>Agnihotri</span>
+          </h1>
+          <p class="hero-lede">
+            AI Engineer and Master's student in Applied Computer Science at Concordia University, building intelligent systems that feel practical, explainable, and human.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">View projects</a>
+            <a class="button button-ghost" href="#contact">Contact</a>
+          </div>
+          <dl class="fact-strip" aria-label="Quick facts">
+            <div>
+              <dt>Current</dt>
+              <dd>Master's at Concordia</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Applied AI systems</dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd>AI Engineer</dd>
+            </div>
+          </dl>
+          <div class="stack-strip" aria-label="Core portfolio signals">
+            <span>LLM systems</span>
+            <span>Agent workflows</span>
+            <span>Full-stack AI</span>
+            <span>Human-centered tools</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Aman AI engineering workbench">
+          <div class="workbench float-slow">
+            <div class="workbench-topbar">
+              <span></span>
+              <span></span>
+              <span></span>
+              <p>aman-agent.workspace</p>
+            </div>
+            <div class="workbench-body">
+              <section class="agent-card main-agent-card">
+                <div class="agent-icon" aria-hidden="true">
+                  <span>A</span><span>A</span>
+                </div>
+                <div>
+                  <p class="mini-label">Current mission</p>
+                  <h2>Build useful AI that behaves calmly under pressure.</h2>
+                </div>
+              </section>
+              <section class="agent-card code-card">
+                <p class="mini-label">Pipeline</p>
+                <pre><code>ingest -> reason -> test -> ship
+evals  -> logs   -> learn</code></pre>
+              </section>
+              <section class="agent-card task-card">
+                <div>
+                  <p class="mini-label">Focus areas</p>
+                  <ul>
+                    <li><span></span> RAG-backed assistants</li>
+                    <li><span></span> AI workflow automation</li>
+                    <li><span></span> Product-ready prototypes</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="agent-card pulse-card">
+                <p class="mini-label">Signal</p>
+                <div class="signal-bars" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <p>subtle systems, strong foundations</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>AI Engineering</span>
+          <span>Python</span>
+          <span>LLMs</span>
+          <span>RAG</span>
+          <span>Concordia University</span>
+          <span>Applied Computer Science</span>
+          <span>Product-minded systems</span>
+          <span>Human-centered automation</span>
+          <span>AI Engineering</span>
+          <span>Python</span>
+          <span>LLMs</span>
+          <span>RAG</span>
+          <span>Concordia University</span>
+          <span>Applied Computer Science</span>
+          <span>Product-minded systems</span>
+          <span>Human-centered automation</span>
+        </div>
+      </div>
+
+      <section class="section-shell section-two-col" id="about" data-section>
+        <div class="section-heading reveal">
+          <p class="label paint-chip red">#01 - ABOUT</p>
+          <h2>Applied AI, drawn with a human hand.</h2>
+        </div>
+        <div class="section-copy reveal">
+          <p>
+            Aman Agnihotri is currently studying for a Master's in Applied Computer Science at Concordia University. He has worked as an AI Engineer, turning machine learning ideas into systems that can be tested, shipped, and improved.
+          </p>
+          <p>
+            The portfolio is intentionally built like a living notebook: expressive, a little imperfect, and ready for real projects, certificates, visuals, and links when those resources are added.
+          </p>
+        </div>
+      </section>
+
+      <section class="surface-band section-shell" aria-label="Portfolio operating principles">
+        <div class="principle-grid">
+          <article class="principle-card reveal">
+            <span>01</span>
+            <h2>Built to explain itself.</h2>
+            <p>Clear states, simple language, and visible reasoning paths make AI tools easier to trust and improve.</p>
+          </article>
+          <article class="principle-card reveal">
+            <span>02</span>
+            <h2>Designed for iteration.</h2>
+            <p>Experiments, logs, and evaluation loops are treated as first-class parts of the product.</p>
+          </article>
+          <article class="principle-card reveal">
+            <span>03</span>
+            <h2>Human taste stays in charge.</h2>
+            <p>Automation is strongest when it removes friction without removing judgment.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="scribble-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 64" preserveAspectRatio="none">
+          <path d="M0 34 C94 3, 156 61, 246 31 S413 20, 504 34 S681 62, 760 30 S928 8, 1013 35 S1138 53, 1200 25"></path>
+        </svg>
+      </div>
+
+      <section class="section-shell" id="work" data-section>
+        <div class="section-heading centered reveal">
+          <p class="label paint-chip yellow">#02 - WORK</p>
+          <h2>From study to shipped systems.</h2>
+          <p>Academic rigor on one side, production instincts on the other.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-marker">Now</div>
+            <div>
+              <h3>Master's Student, Applied Computer Science</h3>
+              <p class="muted">Concordia University</p>
+              <p>Focused on software systems, applied AI, data, and the practical engineering needed to make intelligent products reliable.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-marker">Past</div>
+            <div>
+              <h3>AI Engineer</h3>
+              <p class="muted">Professional experience</p>
+              <p>Worked across AI workflows, automation, model experimentation, and the engineering glue that connects data, APIs, interfaces, and users.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell" id="projects" data-section>
+        <div class="section-heading centered reveal">
+          <p class="label paint-chip blue">#03 - PROJECTS</p>
+          <h2>Selected project directions.</h2>
+          <p>Built as polished portfolio slots so real case studies can drop in cleanly later.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <div class="card-tag">AI Systems</div>
+            <h3>Conversational AI Assistants</h3>
+            <p>Retrieval, prompt design, evaluation loops, and user-facing workflows for assistants that answer with context instead of guesswork.</p>
+            <ul>
+              <li>LLMs</li>
+              <li>RAG</li>
+              <li>Evaluation</li>
+            </ul>
+          </article>
+          <article class="project-card reveal">
+            <div class="card-tag pink">Automation</div>
+            <h3>Operational AI Pipelines</h3>
+            <p>Scripts and services that turn repeated manual work into predictable pipelines with logs, checks, and room to scale.</p>
+            <ul>
+              <li>Python</li>
+              <li>APIs</li>
+              <li>Dashboards</li>
+            </ul>
+          </article>
+          <article class="project-card reveal">
+            <div class="card-tag green">Research</div>
+            <h3>Model Experiments</h3>
+            <p>Structured experiments for testing models, tracking outcomes, and translating promising results into practical prototypes.</p>
+            <ul>
+              <li>ML</li>
+              <li>Data</li>
+              <li>Metrics</li>
+            </ul>
+          </article>
+          <article class="project-card reveal">
+            <div class="card-tag yellow">Product</div>
+            <h3>Human-Centered Tools</h3>
+            <p>Interfaces that keep advanced systems understandable through clear states, friendly copy, and careful interaction design.</p>
+            <ul>
+              <li>UI</li>
+              <li>Frontend</li>
+              <li>UX</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <div class="scribble-divider alt" aria-hidden="true">
+        <svg viewBox="0 0 1200 64" preserveAspectRatio="none">
+          <path d="M0 31 C84 50, 166 16, 242 34 S404 58, 498 29 S668 5, 757 33 S921 57, 1011 29 S1145 8, 1200 33"></path>
+        </svg>
+      </div>
+
+      <section class="section-shell" id="skills" data-section>
+        <div class="section-heading centered reveal">
+          <p class="label paint-chip red">#04 - SKILLS</p>
+          <h2>Skills with useful edges.</h2>
+        </div>
+        <div class="skill-board reveal">
+          <article>
+            <h3>AI / ML</h3>
+            <div class="skill-tags">
+              <span>LLMs</span>
+              <span>RAG</span>
+              <span>NLP</span>
+              <span>Model evaluation</span>
+              <span>Prompt systems</span>
+            </div>
+          </article>
+          <article>
+            <h3>Engineering</h3>
+            <div class="skill-tags">
+              <span>Python</span>
+              <span>JavaScript</span>
+              <span>SQL</span>
+              <span>REST APIs</span>
+              <span>Git</span>
+              <span>Docker</span>
+            </div>
+          </article>
+          <article>
+            <h3>Product Craft</h3>
+            <div class="skill-tags">
+              <span>Prototyping</span>
+              <span>UX thinking</span>
+              <span>Documentation</span>
+              <span>Testing</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell" id="certificates" data-section>
+        <div class="section-heading centered reveal">
+          <p class="label paint-chip pink">#05 - CERTIFICATES</p>
+          <h2>Certificates and proof points.</h2>
+          <p>Credential cards are ready for issuers, dates, PDFs, and verification links.</p>
+        </div>
+        <div class="certificate-grid">
+          <article class="certificate-card reveal">
+            <span>01</span>
+            <h3>AI Engineering</h3>
+            <p>Applied AI, LLM workflows, and production-minded model integration.</p>
+          </article>
+          <article class="certificate-card reveal">
+            <span>02</span>
+            <h3>Machine Learning</h3>
+            <p>Modeling foundations, experimentation, validation, and responsible iteration.</p>
+          </article>
+          <article class="certificate-card reveal">
+            <span>03</span>
+            <h3>Cloud Foundations</h3>
+            <p>Deployment basics, services, infrastructure concepts, and reliability habits.</p>
+          </article>
+          <article class="certificate-card reveal">
+            <span>04</span>
+            <h3>Full-Stack Development</h3>
+            <p>Frontend, backend, APIs, databases, and thoughtful product delivery.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell contact-section" id="contact" data-section>
+        <div class="contact-copy reveal">
+          <p class="label paint-chip yellow">#06 - CONTACT</p>
+          <h2>Let's build the next intelligent thing.</h2>
+          <p>
+            Open to AI engineering work, applied research collaborations, and software projects that need both technical depth and product sense.
+          </p>
+        </div>
+        <div class="contact-actions reveal" aria-label="Contact links">
+          <a class="button button-primary" href="mailto:aman.agnihotri@email.com">Email Aman</a>
+          <a class="button button-ghost" href="#" aria-label="LinkedIn profile placeholder" data-placeholder-link="LinkedIn">LinkedIn</a>
+          <a class="button button-ghost" href="#" aria-label="GitHub profile placeholder" data-placeholder-link="GitHub">GitHub</a>
+          <button class="button button-copy" type="button" data-copy-email="aman.agnihotri@email.com">Copy email</button>
+          <p class="copy-status" aria-live="polite" data-copy-status></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Aman Agnihotri</strong>
+        <span>AI Engineer - Applied Computer Science - Concordia University</span>
+      </div>
+      <a href="#top">Back to top</a>
+    </footer>
+  </body>
+</html>
