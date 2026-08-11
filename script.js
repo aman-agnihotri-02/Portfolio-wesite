@@ -1,60 +1,40 @@
 const root = document.documentElement;
-const body = document.body;
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
-const nav = document.querySelector("#site-nav");
-const copyButton = document.querySelector("[data-copy-email]");
-const copyStatus = document.querySelector("[data-copy-status]");
+const navLinks = document.querySelector("[data-nav-links]");
 const header = document.querySelector("[data-header]");
-const scrollProgress = document.querySelector("[data-scroll-progress]");
-const sections = document.querySelectorAll("[data-section]");
-const navLinks = document.querySelectorAll(".site-nav a");
-const revealItems = document.querySelectorAll(".reveal");
-const placeholderLinks = document.querySelectorAll("[data-placeholder-link]");
+const year = document.querySelector("[data-year]");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const savedTheme = localStorage.getItem("aman-theme");
-const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
 
 function applyTheme(theme) {
   root.dataset.theme = theme;
+  localStorage.setItem("aman-theme", theme);
   themeToggle?.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
 }
 
-applyTheme(initialTheme);
-
-function updateChromeState() {
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-  header?.classList.toggle("is-scrolled", window.scrollY > 12);
-  if (scrollProgress) {
-    scrollProgress.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
-  }
-}
-
-updateChromeState();
-window.addEventListener("scroll", updateChromeState, { passive: true });
-window.addEventListener("resize", updateChromeState);
+applyTheme(root.dataset.theme || "light");
 
 themeToggle?.addEventListener("click", () => {
-  const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
-  applyTheme(nextTheme);
-  localStorage.setItem("aman-theme", nextTheme);
+  applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
 });
 
 function closeMenu() {
-  body.classList.remove("menu-open");
+  navLinks?.classList.remove("is-open");
   menuToggle?.setAttribute("aria-expanded", "false");
-  menuToggle?.setAttribute("aria-label", "Open menu");
+  menuToggle?.setAttribute("aria-label", "Open navigation menu");
 }
 
 menuToggle?.addEventListener("click", () => {
-  const isOpen = body.classList.toggle("menu-open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  const isOpen = navLinks?.classList.toggle("is-open");
+  menuToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+  menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
 });
 
-nav?.addEventListener("click", (event) => {
+navLinks?.addEventListener("click", (event) => {
   if (event.target instanceof HTMLAnchorElement) {
     closeMenu();
   }
@@ -66,75 +46,58 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
+window.addEventListener("scroll", () => {
+  header?.classList.toggle("is-scrolled", window.scrollY > 24);
+}, { passive: true });
+
+const revealElements = document.querySelectorAll(".reveal");
+document.querySelectorAll(".hero .reveal").forEach((element) => element.classList.add("is-visible"));
+
+if (!reduceMotion && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-visible");
         revealObserver.unobserve(entry.target);
       }
     });
-  },
-  { threshold: 0.18 }
-);
+  }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
 
-revealItems.forEach((item) => revealObserver.observe(item));
-
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const id = entry.target.getAttribute("id");
-      navLinks.forEach((link) => {
-        link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
-      });
-    });
-  },
-  { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
-);
-
-sections.forEach((section) => sectionObserver.observe(section));
-
-function fallbackCopy(text) {
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.setAttribute("readonly", "");
-  textarea.style.position = "fixed";
-  textarea.style.left = "-9999px";
-  document.body.appendChild(textarea);
-  textarea.select();
-  const successful = document.execCommand("copy");
-  document.body.removeChild(textarea);
-  return successful;
+  revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
 }
 
-copyButton?.addEventListener("click", async () => {
-  const email = copyButton.dataset.copyEmail;
-  if (!email) return;
+const sections = document.querySelectorAll("main section[id]");
+const navAnchors = document.querySelectorAll(".nav-links a");
 
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(email);
-    } else if (!fallbackCopy(email)) {
-      throw new Error("Copy command failed");
-    }
-    copyStatus.textContent = "Email copied.";
-  } catch {
-    copyStatus.textContent = "Email: " + email;
-  }
+if ("IntersectionObserver" in window) {
+  const activeObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
 
-  window.setTimeout(() => {
-    copyStatus.textContent = "";
-  }, 2600);
-});
+      navAnchors.forEach((anchor) => {
+        anchor.classList.toggle("active", anchor.getAttribute("href") === `#${entry.target.id}`);
+      });
+    });
+  }, { threshold: 0.3, rootMargin: "-28% 0px -55% 0px" });
 
-placeholderLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-    const label = link.dataset.placeholderLink || "Profile";
-    copyStatus.textContent = label + " link reserved.";
-    window.setTimeout(() => {
-      copyStatus.textContent = "";
-    }, 2200);
+  sections.forEach((section) => activeObserver.observe(section));
+}
+
+const tiltTarget = document.querySelector("[data-tilt]");
+
+if (tiltTarget && !reduceMotion) {
+  tiltTarget.addEventListener("pointermove", (event) => {
+    const bounds = tiltTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    tiltTarget.style.transform = `rotateX(${y * -3}deg) rotateY(${x * 4}deg) translateY(-2px)`;
   });
-});
+
+  tiltTarget.addEventListener("pointerleave", () => {
+    tiltTarget.style.transform = "";
+  });
+}
