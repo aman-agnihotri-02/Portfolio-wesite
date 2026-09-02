@@ -1,420 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal portfolio for Aman Agnihotri, an AI engineer and Master's student in Applied Computer Science at Concordia University.">
-  <title>Aman Agnihotri | AI Engineer Portfolio</title>
-  <script>
-    (function () {
-      var storedTheme = localStorage.getItem("aman-theme");
-      var systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      var theme = storedTheme || (systemDark ? "dark" : "light");
-      document.documentElement.dataset.theme = theme;
-    })();
-  </script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Aman Agnihotri, an AI Engineer and Master of Applied Computer Science student at Concordia University."
+    />
+    <title>Aman Agnihotri | AI Engineer</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23111111'/%3E%3Ctext x='32' y='38' text-anchor='middle' font-family='Arial, sans-serif' font-size='20' font-weight='700' fill='white'%3EAA%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-  <header class="site-header" data-header>
-    <nav class="nav-shell" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Aman Agnihotri home">
-        <span class="brand-mark" aria-hidden="true">AA</span>
-        <span>Aman Agnihotri</span>
-      </a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Aman Agnihotri home">
+          <span class="brand-mark" aria-hidden="true">AA</span>
+          <span>Aman Agnihotri</span>
+        </a>
 
-      <button class="icon-button menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links" data-menu-toggle>
-        <span class="menu-lines" aria-hidden="true"></span>
-      </button>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#work">Work</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-      <div class="nav-links" id="nav-links" data-nav-links>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
+        <div class="header-actions">
+          <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+            <span class="sun" aria-hidden="true"></span>
+            <span class="moon" aria-hidden="true"></span>
+          </button>
+          <a class="button button-dark desktop-cta" href="#contact">Connect</a>
+          <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+        <a href="#work">Work</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
         <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
+    </header>
 
-      <button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme" data-theme-toggle>
-        <span class="theme-glyph" aria-hidden="true"></span>
-      </button>
-    </nav>
-  </header>
-
-  <main id="main">
-    <section class="hero section" id="top" aria-labelledby="hero-title">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">AI Engineer / Software Engineer</p>
-        <h1 id="hero-title">Aman Agnihotri</h1>
-        <p class="hero-lede">AI Engineer and Master's student in Applied Computer Science, building intelligent systems, thoughtful software, and meaningful digital experiences at the intersection of AI and engineering.</p>
-
-        <div class="hero-actions" aria-label="Primary actions">
-          <a class="button button-primary" href="#projects">View My Work</a>
-          <a class="button button-secondary" href="#about">About Me</a>
-          <a class="button button-quiet" href="#resume">Resume</a>
-        </div>
-      </div>
-
-      <aside class="hero-panel reveal" aria-label="Current focus">
-        <div class="hero-visual" data-tilt>
-          <img src="assets/hero-ai-surface.png" alt="Abstract computational interface with nodes, grids, and soft blue light">
-        </div>
-        <dl class="current-grid">
-          <div>
-            <dt>Currently</dt>
-            <dd>Master's in Applied Computer Science</dd>
-          </div>
-          <div>
-            <dt>At</dt>
-            <dd>Concordia University</dd>
-          </div>
-          <div>
-            <dt>Focus</dt>
-            <dd>AI, ML, Generative AI, Software Engineering</dd>
-          </div>
-        </dl>
-      </aside>
-    </section>
-
-    <section class="section editorial-section" id="about" aria-labelledby="about-title">
-      <div class="section-kicker reveal">About</div>
-      <div class="section-header reveal">
-        <h2 id="about-title">Engineering taste, AI curiosity, and systems thinking.</h2>
-        <p>Aman works across the space where models, products, and infrastructure meet. The through-line is building software that is technically solid, useful in practice, and calm enough for people to trust.</p>
-      </div>
-
-      <div class="about-grid">
-        <article class="about-story reveal">
-          <h3>Profile</h3>
-          <p>Aman is a Master's student in Applied Computer Science at Concordia University with an AI engineering and software engineering background. He is interested in systems that can reason over information, assist decisions, automate tedious work, and still feel carefully designed.</p>
-          <p>He likes problems that require both model intuition and engineering judgment: shaping data, designing APIs, evaluating behavior, and turning prototypes into reliable software.</p>
-        </article>
-
-        <div class="detail-list reveal" aria-label="Personal details">
-          <div>
-            <span>Currently exploring</span>
-            <strong>AI, Generative AI, Machine Learning, Software Architecture</strong>
-          </div>
-          <div>
-            <span>Based in</span>
-            <strong>Montreal, Canada</strong>
-          </div>
-          <div>
-            <span>Education</span>
-            <strong>Master of Applied Computer Science, Concordia University</strong>
+    <main id="main">
+      <section class="hero section-shell" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">AI Engineer / Applied Computer Science / Montreal</p>
+          <h1>Aman Agnihotri</h1>
+          <p class="hero-subtitle">
+            Building thoughtful AI systems where research fluency, production engineering, and careful user experience meet.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#projects">View projects</a>
+            <a class="button button-light" href="#contact">Start a conversation</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="split-heading reveal">
-        <div>
+        <div class="hero-surface" aria-label="Portfolio summary">
+          <div class="surface-toolbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="surface-grid">
+            <div class="profile-orbit">
+              <div class="orbit-ring ring-one"></div>
+              <div class="orbit-ring ring-two"></div>
+              <div class="initials">AA</div>
+            </div>
+            <div class="surface-lines">
+              <div>
+                <span>Current</span>
+                <strong>Master of Applied Computer Science</strong>
+                <small>Concordia University</small>
+              </div>
+              <div>
+                <span>Role</span>
+                <strong>AI Engineer</strong>
+                <small>LLMs, automation, ML systems</small>
+              </div>
+              <div>
+                <span>Focus</span>
+                <strong>Reliable applied intelligence</strong>
+                <small>from prototype to product</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell intro-band" aria-label="Profile highlights">
+        <div class="metric">
+          <span>01</span>
+          <strong>Applied AI</strong>
+          <p>Model integration, evaluation, prompt systems, automation, and ML-backed product workflows.</p>
+        </div>
+        <div class="metric">
+          <span>02</span>
+          <strong>Graduate Study</strong>
+          <p>Master of Applied Computer Science at Concordia University, with an engineering-first lens.</p>
+        </div>
+        <div class="metric">
+          <span>03</span>
+          <strong>Product Mindset</strong>
+          <p>Clean interfaces, stable systems, and technical choices that make work easier for real users.</p>
+        </div>
+      </section>
+
+      <section class="feature-section section-shell" id="work">
+        <div class="section-heading">
           <p class="eyebrow">Experience</p>
-          <h2 id="experience-title">Work shaped around impact.</h2>
+          <h2>Engineering AI from exploratory notebooks to dependable product surfaces.</h2>
         </div>
-        <p>Replace these entries with the exact companies, dates, and outcomes when they are ready. The layout is built to reward concise, accomplishment-driven writing.</p>
-      </div>
 
-      <div class="timeline">
-        <article class="timeline-item reveal">
-          <div class="timeline-meta">
-            <span>AI Engineer</span>
-            <time datetime="2026">Date range</time>
-          </div>
-          <div class="timeline-body">
-            <h3>Company Name</h3>
-            <p class="muted">Location / Remote</p>
-            <ul>
-              <li>Built AI-powered systems that moved from prototype behavior into repeatable production workflows.</li>
-              <li>Developed machine learning and data pipelines with attention to evaluation, reliability, and maintainability.</li>
-              <li>Collaborated across product and engineering teams to translate ambiguous user needs into technical plans.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-meta">
-            <span>Software Engineer</span>
-            <time datetime="2025">Date range</time>
-          </div>
-          <div class="timeline-body">
-            <h3>Company Name</h3>
-            <p class="muted">Location / Remote</p>
-            <ul>
-              <li>Designed scalable application features across frontend, backend, and API surfaces.</li>
-              <li>Improved system quality through testing, code review, performance tuning, and clear technical documentation.</li>
-              <li>Worked with stakeholders to keep engineering decisions grounded in real product outcomes.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="projects" aria-labelledby="projects-title">
-      <div class="section-header reveal">
-        <p class="eyebrow">Projects</p>
-        <h2 id="projects-title">Selected systems, studies, and experiments.</h2>
-        <p>Project blocks are intentionally modular: duplicate an article, swap the image, update the links, and the layout will hold.</p>
-      </div>
-
-      <article class="featured-project reveal">
-        <div class="project-media">
-          <img src="assets/hero-ai-surface.png" alt="Abstract AI project visual placeholder">
-        </div>
-        <div class="project-content">
-          <p class="project-type">Featured / AI System</p>
-          <h3>Intelligent Research Assistant</h3>
-          <p>A placeholder flagship project for an AI product that helps users retrieve, analyze, and synthesize domain knowledge with grounded responses.</p>
-          <dl class="project-specs">
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">Recent</div>
             <div>
-              <dt>Problem</dt>
-              <dd>Information is scattered across documents, notes, and web sources.</dd>
+              <h3>AI Engineer</h3>
+              <p>
+                Worked across applied machine learning, language-model workflows, and automation systems, turning ambiguous business
+                needs into tested, maintainable AI features.
+              </p>
+              <ul class="tag-list">
+                <li>LLM workflows</li>
+                <li>Evaluation</li>
+                <li>Python</li>
+                <li>APIs</li>
+              </ul>
             </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Now</div>
             <div>
-              <dt>Solution</dt>
-              <dd>RAG pipeline with retrieval, reranking, citations, and evaluation loops.</dd>
+              <h3>Master of Applied Computer Science, Concordia University</h3>
+              <p>
+                Studying advanced computing with a practical focus on robust software, intelligent systems, and research-informed
+                engineering decisions.
+              </p>
+              <ul class="tag-list">
+                <li>Algorithms</li>
+                <li>Systems</li>
+                <li>Data</li>
+                <li>Software design</li>
+              </ul>
             </div>
-            <div>
-              <dt>Outcome</dt>
-              <dd>Designed as a high-signal research workflow ready for real project details.</dd>
+          </article>
+        </div>
+      </section>
+
+      <section class="projects section-shell" id="projects">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Selected projects</p>
+            <h2>Quietly useful systems with AI at the center.</h2>
+          </div>
+          <p>
+            Project details are structured so Aman can swap in repositories, live demos, screenshots, and richer case studies later.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card featured-project">
+            <div class="project-visual agent-visual" aria-hidden="true">
+              <span class="node node-a"></span>
+              <span class="node node-b"></span>
+              <span class="node node-c"></span>
+              <div class="flow-line"></div>
             </div>
-          </dl>
-          <div class="tag-row" aria-label="Technologies">
-            <span>Python</span>
-            <span>LLMs</span>
-            <span>RAG</span>
-            <span>APIs</span>
+            <div class="project-body">
+              <p class="eyebrow">AI workflow</p>
+              <h3>Intelligent Document Assistant</h3>
+              <p>
+                A retrieval and summarization workflow for turning dense files into searchable answers, concise summaries, and
+                traceable outputs.
+              </p>
+              <ul class="tag-list">
+                <li>RAG</li>
+                <li>Embeddings</li>
+                <li>Vector search</li>
+                <li>Evaluation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual data-visual" aria-hidden="true">
+              <span style="height: 38%"></span>
+              <span style="height: 76%"></span>
+              <span style="height: 52%"></span>
+              <span style="height: 88%"></span>
+              <span style="height: 61%"></span>
+            </div>
+            <div class="project-body">
+              <p class="eyebrow">Machine learning</p>
+              <h3>Prediction Pipeline</h3>
+              <p>End-to-end ML pipeline concept covering feature processing, model comparison, metrics, and deployment readiness.</p>
+              <ul class="tag-list">
+                <li>Scikit-learn</li>
+                <li>Pandas</li>
+                <li>Metrics</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual code-visual" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="project-body">
+              <p class="eyebrow">Automation</p>
+              <h3>AI Operations Console</h3>
+              <p>Dashboard pattern for monitoring automated tasks, model outputs, and human review states in one stable interface.</p>
+              <ul class="tag-list">
+                <li>JavaScript</li>
+                <li>APIs</li>
+                <li>UX</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="skills section-shell" id="skills">
+        <div class="section-heading">
+          <p class="eyebrow">Capabilities</p>
+          <h2>A compact stack for designing, building, and shipping applied AI.</h2>
+        </div>
+
+        <div class="skills-layout">
+          <div class="skill-cluster">
+            <h3>AI and ML</h3>
+            <div class="skill-cloud">
+              <span>LLMs</span>
+              <span>Prompt engineering</span>
+              <span>RAG</span>
+              <span>Embeddings</span>
+              <span>Model evaluation</span>
+              <span>Deep learning</span>
+              <span>NLP</span>
+              <span>Computer vision</span>
+            </div>
           </div>
-          <div class="link-row">
-            <a href="#" aria-label="GitHub link for Intelligent Research Assistant">GitHub</a>
-            <a href="#" aria-label="Live demo link for Intelligent Research Assistant">Live demo</a>
+
+          <div class="skill-cluster">
+            <h3>Engineering</h3>
+            <div class="skill-cloud">
+              <span>Python</span>
+              <span>JavaScript</span>
+              <span>SQL</span>
+              <span>REST APIs</span>
+              <span>Git</span>
+              <span>Docker</span>
+              <span>Testing</span>
+              <span>Data pipelines</span>
+            </div>
+          </div>
+
+          <div class="skill-cluster">
+            <h3>Product craft</h3>
+            <div class="skill-cloud">
+              <span>System design</span>
+              <span>Technical writing</span>
+              <span>Experiment design</span>
+              <span>Readable interfaces</span>
+              <span>Stakeholder translation</span>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
 
-      <div class="project-grid">
-        <article class="project-card reveal">
-          <p class="project-type">AI / ML</p>
-          <h3>Model Evaluation Lab</h3>
-          <p>A structured environment for comparing model behavior, prompts, datasets, and failure modes.</p>
-          <div class="tag-row">
-            <span>Python</span>
-            <span>Evaluation</span>
-            <span>ML</span>
-          </div>
-          <div class="link-row">
-            <a href="#">GitHub</a>
-            <a href="#">Case study</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <p class="project-type">Software</p>
-          <h3>Full-Stack Product Starter</h3>
-          <p>A reusable architecture for authenticated dashboards, API integrations, and clean deployment workflows.</p>
-          <div class="tag-row">
-            <span>JavaScript</span>
-            <span>Node.js</span>
-            <span>Databases</span>
-          </div>
-          <div class="link-row">
-            <a href="#">GitHub</a>
-            <a href="#">Live demo</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <p class="project-type">Experiment</p>
-          <h3>Generative Interface Notes</h3>
-          <p>Small studies in how AI tools can feel more legible, controllable, and useful for technical work.</p>
-          <div class="tag-row">
-            <span>GenAI</span>
-            <span>UX</span>
-            <span>Prototyping</span>
-          </div>
-          <div class="link-row">
-            <a href="#">Archive</a>
-            <a href="#">Demo</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section skills-section" id="skills" aria-labelledby="skills-title">
-      <div class="split-heading reveal">
-        <div>
-          <p class="eyebrow">Skills</p>
-          <h2 id="skills-title">A practical toolkit for intelligent software.</h2>
-        </div>
-        <p>The categories are ready for your real stack. Keep only what reflects Aman's actual experience.</p>
-      </div>
-
-      <div class="skills-grid">
-        <article class="skill-card reveal">
-          <h3>AI & Machine Learning</h3>
-          <ul>
-            <li>Python</li>
-            <li>PyTorch</li>
-            <li>TensorFlow</li>
-            <li>Scikit-learn</li>
-            <li>LLMs</li>
-            <li>Generative AI</li>
-            <li>RAG</li>
-            <li>NLP</li>
-          </ul>
-        </article>
-
-        <article class="skill-card reveal">
-          <h3>Software Engineering</h3>
-          <ul>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Python</li>
-            <li>Java</li>
-            <li>REST APIs</li>
-            <li>System Design</li>
-            <li>Testing</li>
-            <li>Git</li>
-          </ul>
-        </article>
-
-        <article class="skill-card reveal">
-          <h3>Web & Backend</h3>
-          <ul>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Databases</li>
-            <li>Cloud</li>
-          </ul>
-        </article>
-
-        <article class="skill-card reveal">
-          <h3>Tools</h3>
-          <ul>
-            <li>GitHub</li>
-            <li>Docker</li>
-            <li>AWS</li>
-            <li>Linux</li>
-            <li>CI/CD</li>
-            <li>Documentation</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section education-section" id="education" aria-labelledby="education-title">
-      <div class="section-kicker reveal">Education</div>
-      <article class="education-panel reveal">
-        <div>
-          <p class="eyebrow">Concordia University</p>
-          <h2 id="education-title">Master of Applied Computer Science</h2>
-          <p>Montreal, Canada</p>
-        </div>
-        <div class="academic-list">
+      <section class="certifications section-shell" id="certifications">
+        <div class="section-heading split">
           <div>
-            <span>Relevant coursework</span>
-            <strong>Machine Learning, Algorithms, Software Engineering, Data Systems</strong>
+            <p class="eyebrow">Certifications</p>
+            <h2>Credentials arranged as a clean, editable record.</h2>
           </div>
+          <p>
+            Add exact issuers, credential IDs, and certificate links in one place inside the HTML when those resources are ready.
+          </p>
+        </div>
+
+        <div class="credential-grid">
+          <article class="credential-card">
+            <span>AI</span>
+            <h3>Applied Machine Learning</h3>
+            <p>Model development, feature preparation, validation, and practical deployment foundations.</p>
+          </article>
+          <article class="credential-card">
+            <span>LLM</span>
+            <h3>Generative AI Systems</h3>
+            <p>Prompt architecture, retrieval workflows, model behavior analysis, and output quality checks.</p>
+          </article>
+          <article class="credential-card">
+            <span>Cloud</span>
+            <h3>Cloud and Data Foundations</h3>
+            <p>APIs, storage, services, data movement, and production-aware engineering practices.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact section-shell" id="contact">
+        <div class="contact-panel">
           <div>
-            <span>Research interests</span>
-            <strong>Applied AI, reliable software systems, human-centered AI tools</strong>
+            <p class="eyebrow">Contact</p>
+            <h2>Open to AI engineering, research-driven product work, and thoughtful collaborations.</h2>
           </div>
-          <div>
-            <span>Achievements</span>
-            <strong>Add scholarships, GPA, publications, or academic highlights here</strong>
+          <div class="contact-actions">
+            <a class="button button-dark" href="mailto:aman.agnihotri@example.com">Email Aman</a>
+            <a class="button button-light" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <button class="button button-light" type="button" data-copy-email data-email="aman.agnihotri@example.com">Copy email</button>
           </div>
+          <p class="copy-status" data-copy-status aria-live="polite"></p>
         </div>
-      </article>
-    </section>
+      </section>
+    </main>
 
-    <section class="section" id="certifications" aria-labelledby="certifications-title">
-      <div class="split-heading reveal">
-        <div>
-          <p class="eyebrow">Certifications</p>
-          <h2 id="certifications-title">Credentials and continuing study.</h2>
-        </div>
-        <p>Add certificate images or credential URLs as they become available.</p>
+    <footer class="site-footer section-shell">
+      <p>Aman Agnihotri</p>
+      <div>
+        <a href="#top">Top</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
+    </footer>
 
-      <div class="cert-grid">
-        <article class="cert-card reveal">
-          <span>Certification Name</span>
-          <h3>Machine Learning Specialization</h3>
-          <p>Issuing Organization / Date</p>
-          <a href="#">Credential URL</a>
-        </article>
-
-        <article class="cert-card reveal">
-          <span>Certification Name</span>
-          <h3>Cloud AI Engineering</h3>
-          <p>Issuing Organization / Date</p>
-          <a href="#">Credential URL</a>
-        </article>
-
-        <article class="cert-card reveal">
-          <span>Certification Name</span>
-          <h3>Software Architecture</h3>
-          <p>Issuing Organization / Date</p>
-          <a href="#">Credential URL</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section resume-section" id="resume" aria-labelledby="resume-title">
-      <div class="resume-panel reveal">
-        <p class="eyebrow">Resume</p>
-        <h2 id="resume-title">Want the complete picture?</h2>
-        <p>The resume link is ready for a future PDF. Drop the file into the assets folder and update the href in this section.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#" aria-label="View Aman Agnihotri resume">View Resume</a>
-          <a class="button button-secondary" href="#" download aria-label="Download Aman Agnihotri resume">Download Resume</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="contact-copy reveal">
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-title">Let's build something interesting.</h2>
-        <p>Whether it is an AI system, a software product, or an unusual technical challenge, Aman is open to meaningful conversations.</p>
-      </div>
-
-      <div class="contact-links reveal" aria-label="Contact links">
-        <a href="mailto:aman@example.com">
-          <span>Email</span>
-          <strong>aman@example.com</strong>
-        </a>
-        <a href="#">
-          <span>LinkedIn</span>
-          <strong>linkedin.com/in/amanagnihotri</strong>
-        </a>
-        <a href="#">
-          <span>GitHub</span>
-          <strong>github.com/amanagnihotri</strong>
-        </a>
-        <a href="#">
-          <span>X / Twitter</span>
-          <strong>@amanagnihotri</strong>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>
-      <strong>Aman Agnihotri</strong>
-      <span>AI Engineer | Computer Science | AI/ML</span>
-    </div>
-    <p>Designed and built with curiosity. &copy; <span data-year></span></p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,103 +1,104 @@
 const root = document.documentElement;
+const header = document.querySelector("[data-header]");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
-const navLinks = document.querySelector("[data-nav-links]");
-const header = document.querySelector("[data-header]");
-const year = document.querySelector("[data-year]");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const mobileNav = document.querySelector("[data-mobile-nav]");
+const copyButton = document.querySelector("[data-copy-email]");
+const copyStatus = document.querySelector("[data-copy-status]");
+const navLinks = [...document.querySelectorAll(".desktop-nav a, .mobile-nav a")];
+const sections = navLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
 
-if (year) {
-  year.textContent = new Date().getFullYear();
+const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+function readStoredTheme() {
+  try {
+    return localStorage.getItem("portfolio-theme");
+  } catch {
+    return null;
+  }
 }
 
-function applyTheme(theme) {
+function storeTheme(theme) {
+  try {
+    localStorage.setItem("portfolio-theme", theme);
+  } catch {
+    return null;
+  }
+}
+
+function setTheme(theme) {
   root.dataset.theme = theme;
-  localStorage.setItem("aman-theme", theme);
-  themeToggle?.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+  storeTheme(theme);
+  themeToggle?.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
 }
 
-applyTheme(root.dataset.theme || "light");
-
-themeToggle?.addEventListener("click", () => {
-  applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-});
+function updateHeaderState() {
+  header?.classList.toggle("is-scrolled", window.scrollY > 8);
+}
 
 function closeMenu() {
-  navLinks?.classList.remove("is-open");
+  header?.classList.remove("is-open");
   menuToggle?.setAttribute("aria-expanded", "false");
-  menuToggle?.setAttribute("aria-label", "Open navigation menu");
 }
+
+setTheme(readStoredTheme() || preferredTheme);
+updateHeaderState();
+
+themeToggle?.addEventListener("click", () => {
+  setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+});
 
 menuToggle?.addEventListener("click", () => {
-  const isOpen = navLinks?.classList.toggle("is-open");
-  menuToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
-  menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+  const isOpen = header.classList.toggle("is-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-navLinks?.addEventListener("click", (event) => {
-  if (event.target instanceof HTMLAnchorElement) {
+mobileNav?.addEventListener("click", (event) => {
+  if (event.target.closest("a")) {
     closeMenu();
   }
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+window.addEventListener("scroll", updateHeaderState, { passive: true });
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 980) {
     closeMenu();
   }
 });
 
-window.addEventListener("scroll", () => {
-  header?.classList.toggle("is-scrolled", window.scrollY > 24);
-}, { passive: true });
+const observer = new IntersectionObserver(
+  (entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-const revealElements = document.querySelectorAll(".reveal");
-document.querySelectorAll(".hero .reveal").forEach((element) => element.classList.add("is-visible"));
+    if (!visible) return;
 
-if (!reduceMotion && "IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
+    navLinks.forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === `#${visible.target.id}`);
     });
-  }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+  },
+  {
+    rootMargin: "-25% 0px -60% 0px",
+    threshold: [0.08, 0.2, 0.4, 0.6],
+  }
+);
 
-  revealElements.forEach((element) => revealObserver.observe(element));
-} else {
-  revealElements.forEach((element) => element.classList.add("is-visible"));
-}
+sections.forEach((section) => observer.observe(section));
 
-const sections = document.querySelectorAll("main section[id]");
-const navAnchors = document.querySelectorAll(".nav-links a");
+copyButton?.addEventListener("click", async () => {
+  const email = copyButton.dataset.email;
 
-if ("IntersectionObserver" in window) {
-  const activeObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
+  try {
+    await navigator.clipboard.writeText(email);
+    copyStatus.textContent = "Email copied.";
+  } catch {
+    copyStatus.textContent = email;
+  }
 
-      navAnchors.forEach((anchor) => {
-        anchor.classList.toggle("active", anchor.getAttribute("href") === `#${entry.target.id}`);
-      });
-    });
-  }, { threshold: 0.3, rootMargin: "-28% 0px -55% 0px" });
-
-  sections.forEach((section) => activeObserver.observe(section));
-}
-
-const tiltTarget = document.querySelector("[data-tilt]");
-
-if (tiltTarget && !reduceMotion) {
-  tiltTarget.addEventListener("pointermove", (event) => {
-    const bounds = tiltTarget.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-    tiltTarget.style.transform = `rotateX(${y * -3}deg) rotateY(${x * 4}deg) translateY(-2px)`;
-  });
-
-  tiltTarget.addEventListener("pointerleave", () => {
-    tiltTarget.style.transform = "";
-  });
-}
+  window.setTimeout(() => {
+    copyStatus.textContent = "";
+  }, 2600);
+});
